@@ -3,5 +3,11 @@ python:
  - "3.6"
 
 # command to run tests
+install:
+  - pip install codecov
+  
 script:
- - python -m unittest TestGitHubApi
+ - coverage run TestGitHubApi.py
+
+after_success:
+  - codecov
