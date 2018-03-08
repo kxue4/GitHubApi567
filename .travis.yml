@@ -1,13 +1,25 @@
 language: python
 python:
  - "3.6"
+ 
+# Add these lines after the install section 
 
+dist: trusty
+sudo: required
+
+addons:
+ sonarcloud:
+ organization: "kxue4-github"
+ token: de7e2e82e9e4eec56f58944ed5c4dba87d769ad9
+ branches:
+ - master
 # command to run tests
 install:
   - pip install codecov
   
 script:
  - coverage run TestGitHubApi.py
+ - sonar-scanner
 
 after_success:
   - codecov
